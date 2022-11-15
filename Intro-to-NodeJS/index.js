@@ -1,4 +1,6 @@
 const http = require("http");
+const fs = require("fs");
+
 
 let app = http.createServer((req, res) => {
 
@@ -11,7 +13,10 @@ let app = http.createServer((req, res) => {
             res.writeHead(200, {
                 'Content-Type': 'text/html'
             })
-            res.write('<h2>CatsPage</h2>')
+
+            let result = fs.readFileSync('./views/cats.html')
+            // readFileSync is not correct, we use it only for this demo
+            res.write(result)
             break;
 
         default:
