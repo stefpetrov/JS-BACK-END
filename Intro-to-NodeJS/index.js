@@ -22,17 +22,19 @@ let app = http.createServer((req, res) => {
             res.end()
 
             break;
-        case '/img/cat1.jpeg':
+        case '/img/cat2':
             res.writeHead(200, {
                 'Content-Type': 'image/jpeg'
             })
-            let catStream = fs.createReadStream('/img/cat1.jpeg')
-            catStream.on('data', (chunk) => {
-                res.write(chunk)
-            })
-            catStream.on('end', () => {
-                res.end()
-            })
+            let catStream = fs.createReadStream('./img/cat2.jpeg')
+
+            // catStream.on('data', (chunk) => {
+            //     res.write(chunk)
+            // })
+            // catStream.on('end', () => {
+            //     res.end()
+            // })
+            catStream.pipe(res)
             break
 
         default:
