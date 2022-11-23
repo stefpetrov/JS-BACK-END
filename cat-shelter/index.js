@@ -10,6 +10,7 @@ const app = http.createServer((req, res) => {
                 "Content-Type": 'text/html'
             })
             res.write(content)
+            res.end()
             break;
         case '/styles/site.css':
             let cssContent = fs.readFileSync('./styles/site.css')
@@ -17,6 +18,7 @@ const app = http.createServer((req, res) => {
                 "Content-Type": 'text/css'
             })
             res.write(cssContent)
+            res.end()
             break;
         case '/js/script.js':
             let js = fs.readFileSync('./js/script.js')
@@ -24,13 +26,28 @@ const app = http.createServer((req, res) => {
                 "Content-Type": 'text/javascript'
             })
             res.write(js)
+            res.end()
+            break
+        case '/img/cat1.jpeg':
+            res.writeHead(200, {
+                'Content-Type': 'image/jpeg'
+            })
+            let catStream = fs.createReadStream('/img/cat1.jpeg')
+            catStrean.on('data', (chunk) => {
+                res.write(chunk)
+            })
+            catStream.on('end', () => {
+                res.end()
+            })
+            break
 
 
         default:
             res.statusCode = 404
+            res.end()
             break;
     }
-    res.end()
+
 
 })
 

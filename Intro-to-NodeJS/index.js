@@ -8,6 +8,8 @@ let app = http.createServer((req, res) => {
     switch (req.url) {
         case '/':
             res.write('<h1>HomePage</h1> <a href="/cats">Cats</a>')
+            res.end()
+
             break;
         case '/cats':
             res.writeHead(200, {
@@ -17,16 +19,31 @@ let app = http.createServer((req, res) => {
             let result = fs.readFileSync('./views/cats.html')
             // readFileSync is not correct, we use it only for this demo
             res.write(result)
+            res.end()
+
             break;
+        case '/img/cat1.jpeg':
+            res.writeHead(200, {
+                'Content-Type': 'image/jpeg'
+            })
+            let catStream = fs.createReadStream('/img/cat1.jpeg')
+            catStream.on('data', (chunk) => {
+                res.write(chunk)
+            })
+            catStream.on('end', () => {
+                res.end()
+            })
+            break
 
         default:
             res.write('Error Page 404')
+            res.end()
+
             break;
     }
 
-    res.end()
 
-    
+
 })
 
 app.listen(5000)
