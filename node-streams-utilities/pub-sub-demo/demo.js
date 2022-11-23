@@ -11,7 +11,7 @@ eventBus.subscribe('customEvent', (firstPerson, secondPerson) => {
 
 eventBus.publish('arewethereyet', 'Sofia')
 eventBus.publish('customEvent', 'Pesho', 'Gosho')
-// unsubscribe()
+unsubscribe()
 eventBus.publish('arewethereyet', 'Plovdiv')
 eventBus.publish('customEvent', 'Pesho', 'Gosho')
 
