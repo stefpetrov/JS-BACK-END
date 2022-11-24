@@ -1,0 +1,20 @@
+{
+  "cats": [
+    {
+      "name": "Stefcho",
+      "description": "nice cat",
+      "breed": "Fluffy Cat"
+    },
+    {
+      "name": "Emcho",
+      "description": "mad cat",
+      "breed": "Fluffy Cat"
+    },
+    {
+      "name": "Stefcho",
+      "description": "nice catty",
+      "breed": "Fluffy Cat"
+    }
+  ],
+  "breeds": []
+}
