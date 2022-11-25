@@ -1,9 +1,13 @@
 const express = require('express')
 
+const catController = require('./controlers/catControler.js')
 
 const app = express()
 
 app.use(express.static('./public'))
+
+// we use catController as a middleware
+app.use('/cats', catController)
 
 app.get('/', (req, res) => {
     res.sendFile('./views/home/index.html', {
@@ -45,23 +49,23 @@ app.get('/addCat', (req, res) => {
     res.write('<h1>Add Cat</h1>')
     res.end()
 })
-app.get('/cat/:catname', (req, res) => {
-    if (req.params.catname == 'Stefcho') {
-        res.redirect('/')
-        return
-    }
+// app.get('/cat/:catname', (req, res) => {
+//     if (req.params.catname == 'Stefcho') {
+//         res.redirect('/')
+//         return
+//     }
 
-    res.header({
-        'Content-Type': 'text/html'
-    })
-    res.status(200)
-    res.write(`
-    <h1>Load Cat Profile</h1>
-    <h2>${req.params.catname}</h2>
-    `)
-    res.end()
+//     res.header({
+//         'Content-Type': 'text/html'
+//     })
+//     res.status(200)
+//     res.write(`
+//     <h1>Load Cat Profile</h1>
+//     <h2>${req.params.catname}</h2>
+//     `)
+//     res.end()
 
-})
+// })
 app.get('/send-file', (req, res) => {
     res.sendFile('./images/cat1.jpeg', {
         root: __dirname
