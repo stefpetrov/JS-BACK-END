@@ -38,14 +38,16 @@ app.get('/addCat', (req, res) => {
     res.end()
 })
 app.get('/cat/:catname', (req, res) => {
-    res.header({
-        'Content-Type': 'text/html'
-    })
-    res.status(200)
-    res.write(`
-    <h1>Load Cat Profile</h1>
-    <h2>${req.params.catname}</h2>
-    `)
+    // res.header({
+    //     'Content-Type': 'text/html'
+    // })
+    // res.status(200)
+    // res.write(`
+    // <h1>Load Cat Profile</h1>
+    // <h2>${req.params.catname}</h2>
+    // `)
+
+    res.download('./images/pawprint.ico')
     res.end()
 })
 
