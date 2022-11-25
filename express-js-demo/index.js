@@ -61,7 +61,6 @@ app.get('/send-file', (req, res) => {
 })
 
 app.get('/download', (req, res) => {
-
     res.download('./images/cat1.jpeg')
 })
 app.get('/data', (req, res) => {
