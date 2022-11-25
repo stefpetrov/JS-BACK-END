@@ -1,17 +1,20 @@
 const express = require('express')
 
 const catController = require('./controlers/catControler.js')
-const requestMiddleware = require('./middlewares/requestLoggerMiddleware.js')
+const requestLogger = require('./middlewares/requestLoggerMiddleware.js')
 
 const app = express()
 
 app.use(express.static('./public'))
 
-// this middleware fn will be applied on all routes
-app.use(requestMiddleware)
+// middleware application level
+app.use(requestLogger)
 
-// we use catController as a middleware only for route /cats
+// we use catController as a middleware on route level
 app.use('/cats', catController)
+
+// middleware on controller level
+// app.use('/cats',requestLogger, catController)
 
 app.get('/', (req, res) => {
     res.sendFile('./views/home/index.html', {
