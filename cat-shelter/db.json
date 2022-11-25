@@ -14,6 +14,11 @@
       "name": "Stefcho",
       "description": "nice catty",
       "breed": "Fluffy Cat"
+    },
+    {
+      "name": "Stefcho2",
+      "description": "bad cat",
+      "breed": "Fluffy Cat"
     }
   ],
   "breeds": []
