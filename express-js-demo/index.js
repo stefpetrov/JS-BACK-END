@@ -38,16 +38,38 @@ app.get('/addCat', (req, res) => {
     res.end()
 })
 app.get('/cat/:catname', (req, res) => {
-    // res.header({
-    //     'Content-Type': 'text/html'
-    // })
-    // res.status(200)
-    // res.write(`
-    // <h1>Load Cat Profile</h1>
-    // <h2>${req.params.catname}</h2>
-    // `)
+    if (req.params.catname == 'Stefcho') {
+        res.redirect('/')
+        return
+    }
 
-    res.download('./images/pawprint.ico')
+    res.header({
+        'Content-Type': 'text/html'
+    })
+    res.status(200)
+    res.write(`
+    <h1>Load Cat Profile</h1>
+    <h2>${req.params.catname}</h2>
+    `)
+    res.end()
+
+})
+app.get('/send-file', (req, res) => {
+    res.sendFile('./images/cat1.jpeg', {
+        root: __dirname
+    })
+})
+
+app.get('/download', (req, res) => {
+
+    res.download('./images/cat1.jpeg')
+})
+app.get('/data', (req, res) => {
+    // it is not mandatory
+    // res.header({
+    //     'Content-Type': 'application/json'
+    // })
+    res.json({ name: "Stefcho", age: 2 })
     res.end()
 })
 
