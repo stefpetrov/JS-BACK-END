@@ -4,13 +4,15 @@ const cubeService = require('../services/cubeService')
 const router = express.Router()
 
 const getCreateCubePage = (req, res) => {
+    let cubes = cubeService.getAll()
+    console.log(cubes)
     res.render('create')
-    cubeService.getAll()
+
 
 }
 const createCube = (req, res) => {
     let { name, description, imageUrl, difficulty } = req.body
-    cubeService.create(name, description, imageUrl, difficulty )
+    cubeService.create(name, description, imageUrl, difficulty)
     res.redirect('/cube/create')
 }
 
