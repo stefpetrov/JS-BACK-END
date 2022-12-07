@@ -5,6 +5,8 @@ const routes = require('./routes')
 const initHandlebars = require("./config/handlebars")
 const app = express()
 
+app.use(express.urlencoded({extended:true})) // needed for extracting data from url (req.body)
+
 
 initHandlebars(app)
 
