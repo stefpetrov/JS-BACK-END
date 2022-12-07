@@ -10,8 +10,11 @@
         <input type="submit" value="search">
       </form>
       <div class="cubes">
-        {{#each cubes}}
-          {{> cube}}
+        
+        {{#each cubes}} 
+        {{!-- cubes comes from homeController, we received it from render method as data --}}
+          {{> cube}}  
+          {{!-- cube comes from partials/cube.hbs --}}
         {{/each}}
       </div>
 
