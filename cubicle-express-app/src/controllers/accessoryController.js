@@ -1,6 +1,8 @@
 const express = require("express")
-
+const accessoryService = require("../services/accessoryService")
 const router = express.Router()
+
+
 
 
 router.get('/create', (req, res) => {
@@ -8,10 +10,10 @@ router.get('/create', (req, res) => {
 
 })
 
-router.post('/create', (req, res) => {
-    let accessory = req.body
+router.post('/create', async (req, res) => {
+    let { name, description, imageUrl } = req.body
 
-    console.log(accessory)
+    await accessoryService.create(name, description, imageUrl)
 
     res.redirect('/')
 

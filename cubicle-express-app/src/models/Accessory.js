@@ -7,7 +7,7 @@ const AccessorySchema = new mongoose.Schema({
     },
     imageUrl: {
         type: String,
-        required: [true, "Image Url is required!"],
+        required: true,
         validate: [/^https?:/i, "Image Url is invalid!"]
     },
     description: {
