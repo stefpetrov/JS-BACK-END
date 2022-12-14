@@ -10,9 +10,13 @@ const create = (name, description, imageUrl) => {
 
     return Accessory.create(accessory)
 }
+async function getAll() {
+    return Accessory.find({}).lean()
+}
 
 const accessoryService = {
-    create
+    create,
+    getAll
 }
 
 module.exports = accessoryService
