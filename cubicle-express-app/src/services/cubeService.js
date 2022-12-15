@@ -4,7 +4,7 @@ const Accessory = require('../models/Accessory')
 
 const getAll = () => Cube.find({}).lean() // .lean() return objects, not models
 
-const getOne = (id) => Cube.findById(id).lean()
+const getOne = (id) => Cube.findById(id).populate('accessories').lean()
 
 const create = (name, description, imageUrl, difficulty) => {
     let cube = new Cube({
